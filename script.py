@@ -1,6 +1,7 @@
 import unittest
 from selenium import webdriver
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import Select
 
 class TestPracticeForm(unittest.TestCase):
     def setUp(self):
@@ -19,6 +20,11 @@ class TestPracticeForm(unittest.TestCase):
         last_name_input = self.driver.find_element(By.NAME, "lastname")
         last_name_input.clear()
         last_name_input.send_keys(last_name)
+
+    def fill_counrty_name(self, continents):
+        continents_dropdown = Select(self.driver.find_element(By.NAME, "continents"))
+        continents_dropdown.select_by_visible_text(continents)
+        
 
     def submit(self):
         submit_button = self.driver.find_element(By.NAME, "photo")
