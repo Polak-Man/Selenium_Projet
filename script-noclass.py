@@ -6,11 +6,18 @@ import time
 
 driver = webdriver.Chrome()
 
+
 # Open the URL
 driver.get("https://www.techlistic.com/p/selenium-practice-form.html")
 
-# Maximize the browser window
-driver.maximize_window()
+time.sleep(5)
+
+cookie_button = driver.find_element(By.ID, "ez-accept-necessary")
+cookie_button.click()
+
+ok_button = driver.find_element(By.ID, "cookieChoiceDismiss")
+ok_button.click()
+
 
 # Enter Firstname
 driver.find_element(By.NAME, "firstname").click()
@@ -44,6 +51,9 @@ dropdown_continents.select_by_visible_text("Europe")
 dropdown_commands = Select(driver.find_element(By.ID, "selenium_commands"))
 dropdown_commands.select_by_visible_text("Browser Commands")
 
+
+driver.find_element(By.ID, "photo").send_keys("C:/Users/Dachi/Downloads/selenium/assets/images.png")
+
 # Scroll down to the Submit button (optional)
 driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
 
@@ -51,9 +61,9 @@ driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
 driver.find_element(By.ID, "submit").click()
 
 # Wait for a while to observe the result
-time.sleep(5)
+#time.sleep(5)
 
-print("Form submitted successfully!")
+print("CONGRATULATIONS ! Form submitted successfully!")
 
 # Close the browser
 driver.quit()
